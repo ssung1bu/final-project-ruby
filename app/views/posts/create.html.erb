@@ -1,0 +1,7 @@
+<h1>There was an error creating your post</h1>
+
+<% @post.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
+<%= render('form') %>

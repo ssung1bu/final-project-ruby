@@ -1,0 +1,17 @@
+<%= form_for(@post, html: {multipart: true}) do |f| %>
+  <p>
+    <%= f.label(:text) %>
+    <%= f.text_field(:text) %>
+  </p>
+  <p>
+    <%= f.label(:avatar) %>
+    <%= f.file_field(:avatar) %>
+  </p>
+  <p>
+    <%= f.label(:user_id) %>
+    <%= f.select(:user_id, User.all.collect { |u| [u.email, u.id] }) %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

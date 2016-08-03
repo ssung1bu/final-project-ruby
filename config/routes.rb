@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
+  root('posts#index')
+
+  devise_for(:users)
+
+  resources(:posts) do
+    get(:following, on: :collection)
+  end
+
+  resources(:users)
+  resources(:follows)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
