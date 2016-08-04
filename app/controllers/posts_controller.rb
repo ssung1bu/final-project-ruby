@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @posts = Post.all
+    @posts = current_user.posts
   end
 
   def show
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    find_post_by_current_user
+    find_post
   end
 
   def update
@@ -42,14 +42,22 @@ class PostsController < ApplicationController
     @posts = current_user.followed_posts
   end
 
+  def upvote 
+    find_post
+    @post.upvote_by current_user
+    redirect_to posts_path
+  end  
+
+  def downvote
+    find_post
+    @post.downvote_by current_user
+    redirect_to posts_path
+  end
+
   private
 
   def find_post
     @post = Post.find(params[:id])
-  end
-
-  def find_post_by_current_user
-    @post = current_user.posts.find(params[:id])
   end
 
   def redirect_to_post_and_set_flash(message)

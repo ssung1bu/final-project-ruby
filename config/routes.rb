@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   resources(:users)
   resources(:follows)
 
-  resources :links do
+  resources :posts do
     member do
-      put "like", to: "links#upvote"
-      put "dislike", to: "links#downvote"
+      put "like", to: "posts#upvote"
+      put "dislike", to: "posts#downvote"
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

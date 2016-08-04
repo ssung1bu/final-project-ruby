@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_voter
+
   has_many(:posts)
 
   has_many(:follows, foreign_key: :following_user_id)
@@ -17,8 +19,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  #include(Gravtastic)
-  #gravtastic
+  include(Gravtastic)
+  gravtastic
 
   def follows?(user)
     followed_users.include?(user)
