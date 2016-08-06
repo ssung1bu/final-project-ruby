@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @posts = current_user.posts
+    @posts = current_user.followed_posts
   end
 
   def show
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    find_post_by_current_user
+    find_post
     @post.update(post_params)
     redirect_to_post_and_set_flash("Successfully updated post #{@post.id}")
   end
@@ -38,8 +38,8 @@ class PostsController < ApplicationController
     set_flash('The post was deleted')
   end
 
-  def following
-    @posts = current_user.followed_posts
+  def userposts
+    @posts = current_user.posts
   end
 
   def upvote 
