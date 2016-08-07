@@ -12,9 +12,9 @@ class Post < ActiveRecord::Base
                     )
   
   #def s3_credentials
-  #  {:bucket => "final-project-ruby",
-  #  :access_key_id => "AKIAIZPZ2FN7FACBD3ZA",
-  #  :secret_access_key => "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"}
+  #  {:bucket => "xxx",
+  #  :access_key_id => "xxx",
+  #  :secret_access_key => "xxx"}
   #end
 
   validates_attachment_content_type(:avatar, content_type: /\Aimage\/.*\Z/)
