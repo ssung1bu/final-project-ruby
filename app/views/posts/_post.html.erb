@@ -21,7 +21,7 @@
 	<%= post.text %> 
 		<div id='button'>
 	  		<% if post.user == current_user %>
-	    	<%= button_to "Edit", edit_post_path(post) %>
+	    	<%= button_to "Edit", edit_post_path(post), method: :get %>
 	    	<%= button_to('Delete', post, method: :delete) %>
 	  		<% end %>
 	  	</div>
