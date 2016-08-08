@@ -21,7 +21,7 @@ class Post < ActiveRecord::Base
 
   def s3_credentials
    {:bucket => "final-project-ruby",
-   :access_key_id => "AKIAJ5FRIAY73Z3GKNFA",
-   :secret_access_key => "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"}
+   :access_key_id => "AKIAJEFHMAGXXLONHJVA",
+   :secret_access_key => "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"}
  end
 end
