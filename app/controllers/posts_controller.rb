@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   
   def index
     @posts = current_user.followed_posts
   end
 
   def show
-    find_post
   end
 
   def new
@@ -22,17 +22,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-    find_post
   end
 
   def update
-    find_post
     @post.update(post_params)
     redirect_to_post_and_set_flash("Successfully updated post #{@post.id}")
   end
 
   def destroy
-    find_post
     @post.destroy
     redirect_to(posts_url)
     set_flash('The post was deleted')
@@ -43,13 +40,11 @@ class PostsController < ApplicationController
   end
 
   def upvote 
-    find_post
     @post.upvote_by current_user
     redirect_to posts_path
   end  
 
   def downvote
-    find_post
     @post.downvote_by current_user
     redirect_to posts_path
   end
