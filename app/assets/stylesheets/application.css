@@ -56,6 +56,18 @@ p{
 	font-size: 48px;
 }
 
+#button{
+	display: inline-flex;
+}
+
+#upvotes{
+	margin-left: 7px;
+}
+
+#follow{
+	display: flex;
+}
+
 a:link {
     text-decoration: none;
 }

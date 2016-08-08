@@ -1,22 +1,29 @@
 <div class='content'>
 <p>
 	<%= link_to(post.user.email) %>
-	<%= post.created_at.strftime("%B %d, %Y %l:%M%P") %>
-	
+	<%="#{time_ago_in_words(post.created_at)} ago"%>	
 </p>
 <p><%= image_tag(post.avatar.url(:medium)) %></p>
+<div id='button'>
 <p>
     <% if current_user.liked?(post) %>
     <%= button_to('Dislike', dislike_post_path(post), method: :put) %>
     <% else %>
     <%= button_to('Like', like_post_path(post), method: :put) %>
-    <%= post.get_upvotes.size %>
     <% end %>
+   	<div id='upvotes'>
+    <%= post.get_upvotes.size %>
+    </div>
 </p>
-<%= post.text %> 
-  <% if post.user == current_user %>
-    <%= edit_post_link(post) %>
-    <%= button_to('Delete', post, method: :delete) %>
-  <% end %>
- 
+</div>
+<p>
+	<%= link_to(post.user.email) %>
+	<%= post.text %> 
+		<div id='button'>
+	  		<% if post.user == current_user %>
+	    	<%= edit_post_link(post) %>
+	    	<%= button_to('Delete', post, method: :delete) %>
+	  		<% end %>
+	  	</div>
+</p>
 </div>

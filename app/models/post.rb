@@ -7,15 +7,15 @@ class Post < ActiveRecord::Base
                     styles:        {medium: '400x400>',
                                     thumb:  '100x100>'},
                     default_url:   ':style/missing.png',
-                    #storage:       :s3
-                    #s3_credentials: Proc.new { |a| a.instance.s3_credentials })
+                    storage:       :s3
+                    s3_credentials: Proc.new { |a| a.instance.s3_credentials })
                     )
   
-  #def s3_credentials
-  #  {:bucket => "xxx",
-  #  :access_key_id => "xxx",
-  #  :secret_access_key => "xxx"}
-  #end
+  def s3_credentials
+    {:bucket => "final-project-ruby",
+    :access_key_id => "AKIAJ5FRIAY73Z3GKNFA",
+    :secret_access_key => "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"}
+  end
 
   validates_attachment_content_type(:avatar, content_type: /\Aimage\/.*\Z/)
 

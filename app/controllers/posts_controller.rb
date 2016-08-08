@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    find_post_by_current_user
+    find_post
     @post.destroy
     redirect_to(posts_url)
     set_flash('The post was deleted')
@@ -58,6 +58,10 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def find_post_by_current_user
+    @post = current_user.posts.find(params[:id])
   end
 
   def redirect_to_post_and_set_flash(message)

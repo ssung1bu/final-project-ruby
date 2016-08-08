@@ -27,7 +27,7 @@ gem 'devise', '~> 3.5'
 gem 'paperclip', '~> 4.2'
 gem 'gravtastic'
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
